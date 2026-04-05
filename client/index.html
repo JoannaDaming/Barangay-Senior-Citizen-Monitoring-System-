@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Senior Citizen Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-users"></i> Barangay Senior Citizen Monitoring</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#" id="nav-residents">Residents</a></li>
+                    <li><a href="#" id="nav-households">Households</a></li>
+                    <li><a href="#" id="nav-benefits">Benefits</a></li>
+                    <li><a href="#" id="nav-health">Health</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="content-area">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="content-section">
+                <div class="section-header">
+                    <h2>System Overview</h2>
+                </div>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <div class="card-info">
+                            <h3>Residents</h3>
+                            <p id="total-residents">0</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-home"></i></div>
+                        <div class="card-info">
+                            <h3>Households</h3>
+                            <p id="total-households">0</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-gift"></i></div>
+                        <div class="card-info">
+                            <h3>Benefits</h3>
+                            <p id="total-benefits">0</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="card-info">
+                            <h3>Health Records</h3>
+                            <p id="total-health">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Residents Section -->
+            <div id="residents-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Residents List</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="resident-search-input" placeholder="Search residents...">
+                            <button class="btn btn-secondary" id="resident-search-btn"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-resident-btn"><i class="fas fa-plus"></i> Add Resident</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="residents-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Birth Date</th>
+                                <th>OSCA ID</th>
+                                <th>Gender</th>
+                                <th>Indigent</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Households Section -->
+            <div id="households-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Households List</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="household-search-input" placeholder="Search households...">
+                            <button class="btn btn-secondary" id="household-search-btn"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-household-btn"><i class="fas fa-plus"></i> Add Household</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="households-table">
+                        <thead>
+                            <tr>
+                                <th>Purok</th>
+                                <th>Street Address</th>
+                                <th>Emergency Contact</th>
+                                <th>Contact Number</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div id="benefits-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Benefit Logs</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="benefit-search-input" placeholder="Search records...">
+                            <button class="btn btn-secondary" id="benefit-search-btn"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-benefit-btn"><i class="fas fa-plus"></i> Record Benefit</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="benefits-table">
+                        <thead>
+                            <tr>
+                                <th>Resident</th>
+                                <th>Benefit Type</th>
+                                <th>Date Received</th>
+                                <th>Distributed By</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Health Section -->
+            <div id="health-section" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Health Records</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="health-search-input" placeholder="Search health info...">
+                            <button class="btn btn-secondary" id="health-search-btn"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-health-btn"><i class="fas fa-notes-medical"></i> Update Health Info</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="health-table">
+                        <thead>
+                            <tr>
+                                <th>Resident</th>
+                                <th>Physical Status</th>
+                                <th>Medical Conditions</th>
+                                <th>Last Checkup</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Resident Modal -->
+    <div id="resident-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-resident-modal">&times;</span>
+            <h2 id="resident-modal-title">Add Resident</h2>
+            <form id="resident-form">
+                <input type="hidden" id="resident-id">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="birth_date">Birth Date</label>
+                    <input type="date" id="birth_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="civil_status">Civil Status</label>
+                    <select id="civil_status" required>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                        <option value="Separated">Separated</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="osca_id">OSCA ID</label>
+                    <input type="text" id="osca_id">
+                </div>
+                <div class="form-section">
+                    <h3>Household Information</h3>
+                    <div class="form-group">
+                        <label for="res_purok_number">Purok Number</label>
+                        <input type="number" id="res_purok_number" placeholder="e.g. 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="res_street_address">Street Address</label>
+                        <input type="text" id="res_street_address" placeholder="Street Address">
+                    </div>
+                    <div class="form-group">
+                        <label for="res_emergency_contact_name">Emergency Contact Name</label>
+                        <input type="text" id="res_emergency_contact_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="res_emergency_contact_num">Emergency Contact Number</label>
+                        <input type="text" id="res_emergency_contact_num">
+                    </div>
+                </div>
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="is_indigent">
+                    <label for="is_indigent">Is Indigent?</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Resident</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Household Modal -->
+    <div id="household-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-household-modal">&times;</span>
+            <h2 id="household-modal-title">Add Household</h2>
+            <form id="household-form">
+                <input type="hidden" id="household-id">
+                <div class="form-group">
+                    <label for="purok_number">Purok Number</label>
+                    <input type="number" id="purok_number" required>
+                </div>
+                <div class="form-group">
+                    <label for="street_address">Street Address</label>
+                    <input type="text" id="street_address" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergency_contact_name">Emergency Contact Name</label>
+                    <input type="text" id="emergency_contact_name">
+                </div>
+                <div class="form-group">
+                    <label for="emergency_contact_num">Emergency Contact Number</label>
+                    <input type="text" id="emergency_contact_num">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Household</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Benefit Modal -->
+    <div id="benefit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-benefit-modal">&times;</span>
+            <h2 id="benefit-modal-title">Record Benefit</h2>
+            <form id="benefit-form">
+                <input type="hidden" id="benefit-id">
+                <div class="form-group">
+                    <label for="benefit_resident_id">Resident</label>
+                    <select id="benefit_resident_id" required>
+                        <option value="">Select Resident</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="benefit_type">Benefit Type</label>
+                    <input type="text" id="benefit_type" required placeholder="e.g. Cash Gift, Medicine, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="distributed_by">Distributed By</label>
+                    <input type="text" id="distributed_by" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Benefit Record</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Health Modal -->
+    <div id="health-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-health-modal">&times;</span>
+            <h2 id="health-modal-title">Update Health Record</h2>
+            <form id="health-form">
+                <input type="hidden" id="health-id">
+                <div class="form-group">
+                    <label for="health_resident_id">Resident</label>
+                    <select id="health_resident_id" required>
+                        <option value="">Select Resident</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="physical_status">Physical Status</label>
+                    <select id="physical_status" required>
+                        <option value="Healthy">Healthy</option>
+                        <option value="Disabled">Disabled</option>
+                        <option value="Bedridden">Bedridden</option>
+                        <option value="Needs Assistance">Needs Assistance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="medical_conditions">Medical Conditions</label>
+                    <textarea id="medical_conditions" rows="3" placeholder="List any illnesses or medications..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="last_checkup">Last Checkup Date</label>
+                    <input type="date" id="last_checkup" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Health Record</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
